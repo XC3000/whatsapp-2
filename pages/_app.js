@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import { auth } from "../firebase";
+import "../styles/globals.css";
+import { userAuthState } from "react-firebase-hooks/auth";
+
+import login from "./login";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const [user] = userAuthState(auth);
+
+  // if (!user) return <Login />;
+
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
